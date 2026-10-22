@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/ise/mini_cpu/acc_z_tb_isim_beh.exe" -prj "/home/ise/mini_cpu/acc_z_tb_beh.prj" "work.acc_z_tb" 
+-intstyle "ise" -incremental -lib "secureip" -o "/home/ise/mini_cpu/cpu_tb_isim_beh.exe" -prj "/home/ise/mini_cpu/cpu_tb_beh.prj" "work.cpu_tb" 

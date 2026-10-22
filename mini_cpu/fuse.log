@@ -1,21 +1,32 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/ise/mini_cpu/acc_z_tb_isim_beh.exe -prj /home/ise/mini_cpu/acc_z_tb_beh.prj work.acc_z_tb 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/ise/mini_cpu/cpu_tb_isim_beh.exe -prj /home/ise/mini_cpu/cpu_tb_beh.prj work.cpu_tb 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 1
 Turning on mult-threading, number of parallel sub-compilation jobs: 0 
 Determining compilation order of HDL files
+Parsing VHDL file "/home/ise/mini_cpu/prog_rom.vhd" into library work
+Parsing VHDL file "/home/ise/mini_cpu/pc.vhd" into library work
+Parsing VHDL file "/home/ise/mini_cpu/control_unit.vhd" into library work
+Parsing VHDL file "/home/ise/mini_cpu/alu.vhd" into library work
 Parsing VHDL file "/home/ise/mini_cpu/acc_z.vhd" into library work
-Parsing VHDL file "/home/ise/mini_cpu/acc_z_tb.vhd" into library work
+Parsing VHDL file "/home/ise/mini_cpu/cpu_top.vhd" into library work
+Parsing VHDL file "/home/ise/mini_cpu/cpu_tb.vhd" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 95300 KB
+Fuse Memory Usage: 96844 KB
 Fuse CPU Usage: 910 ms
 Compiling package standard
 Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling architecture behavioral of entity pc [pc_default]
+Compiling architecture behavioral of entity prog_rom [prog_rom_default]
+Compiling architecture behavioral of entity control_unit [control_unit_default]
+Compiling architecture behavioral of entity alu [alu_default]
 Compiling architecture behavioral of entity acc_z [acc_z_default]
-Compiling architecture behavioral of entity acc_z_tb
+Compiling architecture structural of entity cpu_top [cpu_top_default]
+Compiling architecture behavioral of entity cpu_tb
 Time Resolution for simulation is 1ps.
-Compiled 5 VHDL Units
-Built simulation executable /home/ise/mini_cpu/acc_z_tb_isim_beh.exe
-Fuse Memory Usage: 103952 KB
-Fuse CPU Usage: 920 ms
-GCC CPU Usage: 90 ms
+Compiled 16 VHDL Units
+Built simulation executable /home/ise/mini_cpu/cpu_tb_isim_beh.exe
+Fuse Memory Usage: 111656 KB
+Fuse CPU Usage: 960 ms
+GCC CPU Usage: 160 ms
