@@ -1,91 +1,37 @@
---------------------------------------------------------------------------------
--- Company: 
--- Engineer:
---
--- Create Date:   07:49:10 10/22/2026
--- Design Name:   
--- Module Name:   /home/ise/mini_cpu/prog_rom_tb.vhd
--- Project Name:  mini_cpu
--- Target Device:  
--- Tool versions:  
--- Description:   
--- 
--- VHDL Test Bench Created by ISE for module: prog_rom
--- 
--- Dependencies:
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
---
--- Notes: 
--- This testbench has been automatically generated using types std_logic and
--- std_logic_vector for the ports of the unit under test.  Xilinx recommends
--- that these types always be used for the top-level I/O of a design in order
--- to guarantee that the testbench will bind correctly to the post-implementation 
--- simulation model.
---------------------------------------------------------------------------------
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
- 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
- 
-ENTITY prog_rom_tb IS
-END prog_rom_tb;
- 
-ARCHITECTURE behavior OF prog_rom_tb IS 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
- 
-    COMPONENT prog_rom
-    PORT(
-         ADDR : IN  std_logic_vector(3 downto 0);
-         INSTR : OUT  std_logic_vector(11 downto 0)
-        );
-    END COMPONENT;
-    
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
-   --Inputs
-   signal ADDR : std_logic_vector(3 downto 0) := (others => '0');
+entity prog_rom_tb is
+end prog_rom_tb;
+architecture Behavioral of prog_rom_tb is
+    signal ADDR  : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
+    signal INSTR : STD_LOGIC_VECTOR(11 downto 0);
+    type exp_type is array (0 to 15) of STD_LOGIC_VECTOR(11 downto 0);
+    constant EXPECTED : exp_type := (
+        0 => x"10F",
+        1 => x"5A0",
+        2 => x"700",
+        3 => x"900",
+        4 => x"2D8",
+        5 => x"581",
+        6 => x"900",
+        others => x"000"
+    );
+begin
+    uut : entity work.prog_rom
+        port map (ADDR => ADDR, INSTR => INSTR);
 
- 	--Outputs
-   signal INSTR : std_logic_vector(11 downto 0);
-   -- No clocks detected in port list. Replace <clock> below with 
-   -- appropriate port name 
- 
-   constant <clock>_period : time := 10 ns;
- 
-BEGIN
- 
-	-- Instantiate the Unit Under Test (UUT)
-   uut: prog_rom PORT MAP (
-          ADDR => ADDR,
-          INSTR => INSTR
-        );
-
-   -- Clock process definitions
-   <clock>_process :process
-   begin
-		<clock> <= '0';
-		wait for <clock>_period/2;
-		<clock> <= '1';
-		wait for <clock>_period/2;
-   end process;
- 
-
-   -- Stimulus process
-   stim_proc: process
-   begin		
-      -- hold reset state for 100 ns.
-      wait for 100 ns;	
-
-      wait for <clock>_period*10;
-
-      -- insert stimulus here 
-
-      wait;
-   end process;
-
-END;
+    stim : process
+    begin
+        for i in 0 to 15 loop
+            ADDR <= std_logic_vector(to_unsigned(i, 4));
+            wait for 10 ns;
+            assert INSTR = EXPECTED(i)
+                report "ROM mismatch at address " & integer'image(i)
+                severity error;
+        end loop;
+		  report "prog_rom_tb finished" severity note;
+        wait;
+    end process;
+end Behavioral;

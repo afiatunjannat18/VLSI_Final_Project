@@ -1,5 +1,5 @@
 ISim log file
-Running: /home/ise/mini_cpu/prog_rom_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/ise/mini_cpu/prog_rom_isim_beh.wdb 
+Running: /home/ise/mini_cpu/alu_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/ise/mini_cpu/alu_tb_isim_beh.wdb 
 ISim P.20131013 (signature 0xfbc00daa)
 ----------------------------------------------------------------------
 WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
@@ -12,6 +12,6 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
-at 0 ps, Instance /prog_rom/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 Finished circuit initialization process.
+at 80 ns: Note: alu_tb finished (/alu_tb/).
 # exit 0
