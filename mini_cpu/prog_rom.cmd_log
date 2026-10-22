@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/ise/mini_cpu/prog_rom.xst" -ofn "/home/ise/mini_cpu/prog_rom.syr" 
